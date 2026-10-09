@@ -2,6 +2,22 @@
 
 A small Godot first-person playground built from editable primitive meshes. Explore a purple test room, jump onto blocks, and climb a ramp. No plugins, downloaded assets, or external services are needed.
 
+## Browser version
+
+The project supports a single-threaded WebGL 2 browser export. On a hosted version, click **Click to start exploring** to capture the mouse, then use the controls below. No Godot installation is needed to play in the browser. Escape releases the cursor, and another click resumes play.
+
+To produce the browser files in this prepared cloud environment:
+
+```bash
+bash tools/export_web.sh
+```
+
+The matching Godot 4.6.3 export templates must be installed first. They are already installed in this cloud environment and were verified against the official release checksum. The generated site is in `builds/web/`; serve it over HTTP or HTTPS. Single-threaded export does not require cross-origin isolation headers. Opening `index.html` directly as a local file will not load its game data.
+
+To refresh the files prepared for GitHub Pages, run `bash tools/prepare_pages.sh`. This writes the browser files and engine notices to `docs/` and includes `.nojekyll`. The generated folders are excluded from the Godot export to prevent packing old builds into new builds.
+
+To turn on the hosted game in GitHub, open the repository's **Settings → Pages**, select **Deploy from a branch**, choose **main** and **/docs**, then save. GitHub will display the playable website link once deployment completes. Hosting must be enabled separately before that link works.
+
 ## Play
 
 Use **Godot 4.6.3 standard edition** with GDScript. Import `project.godot` in the Godot Project Manager, then press **F6** while viewing `scenes/test_room.tscn`, or **F5** to run the project.

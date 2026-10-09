@@ -20,7 +20,8 @@ var _spawn_transform: Transform3D
 
 func _ready() -> void:
 	_spawn_transform = global_transform
-	set_controls_active(true)
+	# Browsers require a click before requesting pointer lock.
+	set_controls_active(not OS.has_feature("web"))
 
 
 func _unhandled_input(event: InputEvent) -> void:
